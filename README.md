@@ -43,16 +43,11 @@ This repository consists of following packages:
 ## Usage
 
 ### Control the gripper
-Two terminals are required to run the full demonstration. Create a terminal and source the ROS bash file for each of them via
-
-        cd ~/catkin_ws
-        source devel/setup.bash 
-
 Launch the Gazebo simulator:
 
-        roslaunch rain ur5_robotiq.launch
+        roslaunch rain_gazebo ur5_robotiq.launch
 
-To control the gripper, select one of the commands to execute below:-
+To control the gripper, in another terminal, execute below:-
 
 Closing the hand halfway:
 
