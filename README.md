@@ -17,13 +17,16 @@ The dependencies required are as follows:
 (1) Gazebo model for Robotiq S three-finger gripper (https://bitbucket.org/wilsonz91/robotiq/src/master/)
 
 (2) Universal robot package (https://github.com/ros-industrial/universal_robot)
+  
+  - If you clone this package, it is required to have additional files to control the UR gazebo model. Thus, I would recommend to clone this (https://inmojang@bitbucket.org/inmojang/universal_robot.git) 
+
 
 #### Buliding
 To build from source, clone the latest version from this repository into your catkin workspace and compile the package.
     
 	        cd catkin_ws/src
 	        git clone https://wilsonz91@bitbucket.org/wilsonz91/robotiq.git
-            git clone https://github.com/ros-industrial/universal_robot
+            git clone https://inmojang@bitbucket.org/inmojang/universal_robot.git
 	        git clone https://inmojang@bitbucket.org/inmojang/rain.git
             catkin_make
 
@@ -39,7 +42,7 @@ This repository consists of following packages:
 ---
 ## Usage
 
-### Demonstrations
+### Control the gripper
 Two terminals are required to run the full demonstration. Create a terminal and source the ROS bash file for each of them via
 
         cd ~/catkin_ws
@@ -74,3 +77,12 @@ Change to scissor mode and close the fingers:
 Open fingers:
 
         rostopic pub --once left_hand/command robotiq_msgs/SModelRobotOutput {1,3,1,0,0,0,0,255,0,155,0,0,255,0,0,0,0,0}
+
+
+### Control the arm
+
+Execute below in the command line: 
+
+        rosrun ur_driver gazebo_move.py
+
+Note that, in the python file, there are predefined trajectories. 
