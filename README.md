@@ -16,7 +16,7 @@ The dependencies required are as follows:
 
 (1) Gazebo model for Robotiq S three-finger gripper (https://bitbucket.org/wilsonz91/robotiq/src/master/)
 
-  - ***robotiq_gazebo_ros_plugins*** was deleted because it causes conflicts with robotiq hardware package (https://github.com/ros-industrial/robotiq), which I would like to keep as it is as possible. 
+  - ***robotiq_gazebo_ros_plugins*** was deleted because it causes conflicts with robotiq hardware package (https://github.com/ros-industrial/robotiq), which I would like to keep as it is as possible for future work.
 
 (2) Universal robot package (https://github.com/ros-industrial/universal_robot)
   
