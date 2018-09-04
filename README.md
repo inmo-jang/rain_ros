@@ -25,7 +25,7 @@ The dependencies required are as follows:
 To build from source, clone the latest version from this repository into your catkin workspace and compile the package.
     
 	        cd catkin_ws/src
-	        git clone https://wilsonz91@bitbucket.org/wilsonz91/robotiq.git
+	        git clone https://inmojang@bitbucket.org/inmojang/robotiq.git
             git clone https://inmojang@bitbucket.org/inmojang/universal_robot.git
 	        git clone https://inmojang@bitbucket.org/inmojang/rain.git
             catkin_make
