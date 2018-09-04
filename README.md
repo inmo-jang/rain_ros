@@ -56,27 +56,27 @@ To control the gripper, select one of the commands to execute below:-
 
 Closing the hand halfway:
 
-        rostopic pub --once left_hand/command robotiq_msgs/SModelRobotOutput {1,0,1,0,0,0,127,255,0,155,0,0,255,0,0,0,0,0}
+        rostopic pub --once right_hand/command robotiq_msgs/SModelRobotOutput {1,0,1,0,0,0,127,255,0,155,0,0,255,0,0,0,0,0}
 
 Fully open the hand:
 
-        rostopic pub --once left_hand/command robotiq_msgs/SModelRobotOutput {1,0,1,0,0,0,0,255,0,155,0,0,255,0,0,0,0,0}
+        rostopic pub --once right_hand/command robotiq_msgs/SModelRobotOutput {1,0,1,0,0,0,0,255,0,155,0,0,255,0,0,0,0,0}
 
 Change the grasping mode to pinch and close the gripper:
 
-        rostopic pub --once left_hand/command robotiq_msgs/SModelRobotOutput {1,1,1,0,0,0,255,255,0,155,0,0,255,0,0,0,0,0}
+        rostopic pub --once right_hand/command robotiq_msgs/SModelRobotOutput {1,1,1,0,0,0,255,255,0,155,0,0,255,0,0,0,0,0}
 
 Switch to wide mode and fully open the hand:
 
-        rostopic pub --once left_hand/command robotiq_msgs/SModelRobotOutput {1,2,1,0,0,0,0,255,0,155,0,0,255,0,0,0,0,0}
+        rostopic pub --once right_hand/command robotiq_msgs/SModelRobotOutput {1,2,1,0,0,0,0,255,0,155,0,0,255,0,0,0,0,0}
 
 Change to scissor mode and close the fingers:
 
-        rostopic pub --once left_hand/command robotiq_msgs/SModelRobotOutput {1,3,1,0,0,0,255,255,0,155,0,0,255,0,0,0,0,0}
+        rostopic pub --once right_hand/command robotiq_msgs/SModelRobotOutput {1,3,1,0,0,0,255,255,0,155,0,0,255,0,0,0,0,0}
 
 Open fingers:
 
-        rostopic pub --once left_hand/command robotiq_msgs/SModelRobotOutput {1,3,1,0,0,0,0,255,0,155,0,0,255,0,0,0,0,0}
+        rostopic pub --once right_hand/command robotiq_msgs/SModelRobotOutput {1,3,1,0,0,0,0,255,0,155,0,0,255,0,0,0,0,0}
 
 
 ### Control the arm
