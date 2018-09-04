@@ -50,7 +50,7 @@ Two terminals are required to run the full demonstration. Create a terminal and 
 
 Launch the Gazebo simulator:
 
-        roslaunch robotiq_gazebo robotiq.launch
+        roslaunch rain ur5_robotiq.launch
 
 To control the gripper, select one of the commands to execute below:-
 
