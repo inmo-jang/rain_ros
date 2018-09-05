@@ -14,11 +14,11 @@ At the moment, this source file is a gazebo model for UR5 and Robotiq 3-finger g
 #### Dependencies
 The dependencies required are as follows: 
 
-(1) Gazebo model for Robotiq S three-finger gripper (https://inmojang@bitbucket.org/inmojang/robotiq.git, Originally from https://inmojang@bitbucket.org/wilsonz91/robotiq.git)
+(1) Robotiq 3-finger gripper package (https://inmojang@bitbucket.org/inmojang/robotiq.git)
 
-(2) Universal robot package (https://inmojang@bitbucket.org/inmojang/universal_robot.git,  Originally from https://github.com/ros-industrial/universal_robot)
+(2) Universal robot package (https://inmojang@bitbucket.org/inmojang/universal_robot.git)
   
-Note: Some of the dependencies are originally from other repositories, but modified for this project. 
+Note: Some of the dependencies are originally from other repositories (please refer to each repo's git), but modified for this project. 
 
 
 #### Buliding
@@ -51,27 +51,34 @@ To control the gripper, in another terminal, execute below:-
 
 Closing the hand halfway:
 
-        rostopic pub --once right_hand/command robotiq_msgs/SModelRobotOutput {1,0,1,0,0,0,127,255,0,155,0,0,255,0,0,0,0,0}
+        rostopic pub --once right_hand/command robotiq_s_model_control/SModel_robot_output {1,0,1,0,0,0,127,255,0,155,0,0,255,0,0,0,0,0,0}
 
 Fully open the hand:
 
-        rostopic pub --once right_hand/command robotiq_msgs/SModelRobotOutput {1,0,1,0,0,0,0,255,0,155,0,0,255,0,0,0,0,0}
+        rostopic pub --once right_hand/command robotiq_s_model_control/SModel_robot_output {1,0,1,0,0,0,0,255,0,155,0,0,255,0,0,0,0,0,0}
 
 Change the grasping mode to pinch and close the gripper:
 
-        rostopic pub --once right_hand/command robotiq_msgs/SModelRobotOutput {1,1,1,0,0,0,255,255,0,155,0,0,255,0,0,0,0,0}
+        rostopic pub --once right_hand/command robotiq_s_model_control/SModel_robot_output {1,1,1,0,0,0,255,255,0,155,0,0,255,0,0,0,0,0,0}
 
 Switch to wide mode and fully open the hand:
 
-        rostopic pub --once right_hand/command robotiq_msgs/SModelRobotOutput {1,2,1,0,0,0,0,255,0,155,0,0,255,0,0,0,0,0}
+        rostopic pub --once right_hand/command robotiq_s_model_control/SModel_robot_output {1,2,1,0,0,0,0,255,0,155,0,0,255,0,0,0,0,0,0}
 
 Change to scissor mode and close the fingers:
 
-        rostopic pub --once right_hand/command robotiq_msgs/SModelRobotOutput {1,3,1,0,0,0,255,255,0,155,0,0,255,0,0,0,0,0}
+        rostopic pub --once right_hand/command robotiq_s_model_control/SModel_robot_output {1,3,1,0,0,0,255,255,0,155,0,0,255,0,0,0,0,0,0}
 
 Open fingers:
 
-        rostopic pub --once right_hand/command robotiq_msgs/SModelRobotOutput {1,3,1,0,0,0,0,255,0,155,0,0,255,0,0,0,0,0}
+        rostopic pub --once right_hand/command robotiq_s_model_control/SModel_robot_output {1,3,1,0,0,0,0,255,0,155,0,0,255,0,0,0,0,0,0}
+
+Or you can excute below in the command line:
+        
+        rosrun robotiq_s_model_control SModelSimpleController_gazebo.py
+        
+Here, SModelSimpleController_gazebo.py has one line modification from the original file(SModelSimpleController.py) in the robotiq package.
+
 
 
 ### Control the arm
