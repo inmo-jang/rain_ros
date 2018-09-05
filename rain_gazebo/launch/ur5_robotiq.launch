@@ -26,8 +26,8 @@
 
   
     <!-- Robotiq Hand bringup -->
-  <include file="$(find robotiq_gazebo)/launch/atlas_robotiq_hands_bringup.launch">
-  </include> 
+  <!-- <include file="$(find robotiq_gazebo)/launch/atlas_robotiq_hands_bringup.launch"> -->
+  <!-- </include>  -->
 
 
 </launch>
