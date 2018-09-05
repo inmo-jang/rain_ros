@@ -12,15 +12,13 @@ At the moment, this source file is a gazebo model for UR5 and Robotiq 3-finger g
 ### Building from Source
 
 #### Dependencies
-The dependencies required are as follows:
+The dependencies required are as follows: 
 
-(1) Gazebo model for Robotiq S three-finger gripper (https://bitbucket.org/wilsonz91/robotiq/src/master/)
+(1) Gazebo model for Robotiq S three-finger gripper (https://inmojang@bitbucket.org/inmojang/robotiq.git, Originally from https://inmojang@bitbucket.org/wilsonz91/robotiq.git)
 
-  - ***robotiq_gazebo_ros_plugins*** was deleted because it causes conflicts with robotiq hardware package (https://github.com/ros-industrial/robotiq), which I would like to keep as it is as possible for future work.
-
-(2) Universal robot package (https://github.com/ros-industrial/universal_robot)
+(2) Universal robot package (https://inmojang@bitbucket.org/inmojang/universal_robot.git,  Originally from https://github.com/ros-industrial/universal_robot)
   
-  - If you clone this package, it is required to have additional files to control the UR gazebo model. Thus, I would recommend to clone this (https://inmojang@bitbucket.org/inmojang/universal_robot.git) 
+Note: Some of the dependencies are originally from other repositories, but modified for this project. 
 
 
 #### Buliding
