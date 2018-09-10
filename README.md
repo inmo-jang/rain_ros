@@ -42,12 +42,22 @@ This repository consists of following packages:
 ---
 ## Usage
 
-### Control the gripper
 Launch the Gazebo simulator:
 
         roslaunch rain_gazebo ur5_robotiq.launch
 
-To control the gripper, in another terminal, execute below:-
+#### Control the gripper
+
+##### Via Keyboard Teleoperation
+
+To control the gripper, in another terminal, excute below in the command line:
+        
+        rosrun robotiq_s_model_control SModelSimpleController_gazebo.py
+        
+Here, SModelSimpleController_gazebo.py has one line modification from the original file(SModelSimpleController.py) in the robotiq package.
+
+
+##### Using ***rostopic pub*** 
 
 Closing the hand halfway:
 
@@ -73,18 +83,18 @@ Open fingers:
 
         rostopic pub --once right_hand/command robotiq_s_model_control/SModel_robot_output {1,3,1,0,0,0,0,255,0,155,0,0,255,0,0,0,0,0,0}
 
-Or you can excute below in the command line:
-        
-        rosrun robotiq_s_model_control SModelSimpleController_gazebo.py
-        
-Here, SModelSimpleController_gazebo.py has one line modification from the original file(SModelSimpleController.py) in the robotiq package.
 
 
 
-### Control the arm
+#### Control the arm
 
-Execute below in the command line: 
+##### Keyboard Teleoperation
 
-        rosrun ur_driver gazebo_move.py
+Execute below in the command line to control each joint using a keyboard: 
 
-Note that, in the python file, there are predefined trajectories. 
+        rosrun ur_driver gazebo_teleop_key.py
+
+
+
+![picture](rain/UR5_robotiq.png)
+  
