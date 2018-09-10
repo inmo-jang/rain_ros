@@ -57,7 +57,7 @@ To control the gripper, in another terminal, excute below in the command line:
 Here, SModelSimpleController_gazebo.py has one line modification from the original file(SModelSimpleController.py) in the robotiq package.
 
 
-##### Using ***rostopic pub*** 
+##### Via ***rostopic pub*** 
 
 Closing the hand halfway:
 
@@ -88,7 +88,7 @@ Open fingers:
 
 #### Control the arm
 
-##### Keyboard Teleoperation
+##### Via Keyboard Teleoperation
 
 Execute below in the command line to control each joint using a keyboard: 
 
