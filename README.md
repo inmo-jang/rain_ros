@@ -25,6 +25,7 @@ The dependencies required are as follows:
            
         sudo apt-get install ros-kinetic-universal-robot
         sudo apt-get install ros-kinetic-moveit
+        git clone https://github.com/ndarray/Boost.NumPy.git
          
 Note: Some of the dependencies are originally from other repositories (please refer to each repo's git), but modified for this project. 
 
