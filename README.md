@@ -15,18 +15,29 @@ At the moment, this source file is a gazebo model for UR5 and Robotiq 3-finger g
 The dependencies required are as follows: 
 
 (1) Robotiq 3-finger gripper package (https://inmojang@bitbucket.org/inmojang/robotiq.git)
-         
+
+Install its dependencies first...
+
         rosdep install robotiq_modbus_tcp
         sudo apt-get install ros-kinetic-soem
         git clone https://github.com/smits/soem.git
  
- 
+Then, 
+
+        git clone https://inmojang@bitbucket.org/inmojang/robotiq.git
+
 (2) Universal robot package (https://inmojang@bitbucket.org/inmojang/universal_robot.git)
-           
+
+Install its dependencies first...
+
         sudo apt-get install ros-kinetic-universal-robot
         sudo apt-get install ros-kinetic-moveit
-        git clone https://github.com/ndarray/Boost.NumPy.git
-         
+
+Then, 
+
+        git clone https://inmojang@bitbucket.org/inmojang/universal_robot.git
+        
+        
 Note: Some of the dependencies are originally from other repositories (please refer to each repo's git), but modified for this project. 
 
 
