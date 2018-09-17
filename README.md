@@ -9,44 +9,26 @@ At the moment, this source file is a gazebo model for UR5 and Robotiq 3-finger g
 ---
 ## Installation
 
+Install ROS as in http://wiki.ros.org/kinetic/Installation/Ubuntu
+Install Gazebo ROS pakcage as in http://gazebosim.org/tutorials?tut=ros_installing (Instruction for ROS Kinetic)
+
+Then, ..
+
 ### Building from Source
 
 #### Dependencies
 The dependencies required are as follows: 
 
-(1) Robotiq 3-finger gripper package (https://inmojang@bitbucket.org/inmojang/robotiq.git)
+(1) Universal robot package (https://bitbucket.org/inmojang/universal_robot)
 
-Install its dependencies first...
 
-        rosdep install robotiq_modbus_tcp
-        sudo apt-get install ros-kinetic-soem
-        git clone https://github.com/smits/soem.git
- 
-Then, 
+(2) Robotiq 3-finger gripper package (https://inmojang@bitbucket.org/inmojang/robotiq.git)
 
-        git clone https://inmojang@bitbucket.org/inmojang/robotiq.git
 
-(2) Universal robot package (https://inmojang@bitbucket.org/inmojang/universal_robot.git)
-
-Install its dependencies first...
-
-        sudo apt-get install ros-kinetic-universal-robot
-        sudo apt-get install ros-kinetic-moveit
-
-Then, 
-
-        git clone https://inmojang@bitbucket.org/inmojang/universal_robot.git
-        
-        
 Note: Some of the dependencies are originally from other repositories (please refer to each repo's git), but modified for this project. 
 
 
 
-#### Buliding
-To build from source, clone the latest version from this repository into your catkin workspace and compile the package.
-    
-	        cd catkin_ws/src
-            catkin_make
 
 ### Packages Overview
 
