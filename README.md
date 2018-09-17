@@ -9,10 +9,10 @@ At the moment, this source file is a gazebo model for UR5 and Robotiq 3-finger g
 ---
 ## Installation
 
-Install ROS as in http://wiki.ros.org/kinetic/Installation/Ubuntu
-Install Gazebo ROS pakcage as in http://gazebosim.org/tutorials?tut=ros_installing (Instruction for ROS Kinetic)
+### Environment setting
 
-Then, ..
+- Install ROS as in http://wiki.ros.org/kinetic/Installation/Ubuntu
+- Install Gazebo ROS pakcage as in http://gazebosim.org/tutorials?tut=ros_installing (Instruction for ROS Kinetic)
 
 ### Building from Source
 
