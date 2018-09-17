@@ -4,7 +4,7 @@
 This is a repository of visual/haptic-teleoperated industrial robotic manipulators in RAIN hub project (https://rainhub.org.uk/). 
 At the moment, this source file is a gazebo model for UR5 and Robotiq 3-finger gripper. 
 
-** Auther/Maintainer: Inmo Jang (inmo.jang@manchester.ac.uk), Robotics for Extreme Environment Group, University of Manchester**
+** Author/Maintainer: Inmo Jang (inmo.jang@manchester.ac.uk), Robotics for Extreme Environment Group, University of Manchester**
 
 ---
 ## Installation
