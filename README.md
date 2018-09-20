@@ -95,6 +95,11 @@ Execute below in the command line to control each joint using a keyboard:
         rosrun ur_driver gazebo_teleop_key.py
 
 
+Or you may control the position of the end effector by:
+
+        rosrun ur_driver gazebo_teleop_key_xyz.py
+        
+
 
 ![picture](rain/UR5_robotiq.png)
   
