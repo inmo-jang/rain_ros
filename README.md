@@ -52,9 +52,9 @@ Launch the Gazebo simulator:
 
 To control the gripper, in another terminal, excute below in the command line:
         
-        rosrun robotiq_s_model_control SModelSimpleController_gazebo.py
-        
-Here, SModelSimpleController_gazebo.py has one line modification from the original file(SModelSimpleController.py) in the robotiq package.
+        rosrun robotiq_s_model_control SModelController_gazebo.py
+
+The gripper has Basic/Pinch/Wide/Scissor modes, and the fingers can also be individually controlled. 
 
 
 ##### Via ***rostopic pub*** 
