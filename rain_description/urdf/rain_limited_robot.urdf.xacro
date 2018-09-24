@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro"
+       name="ur5_robotiq3" >
+
+<!-- (0) Stand -->
+
+  <link name="world"/>
+
+  <!-- Stand -->
+  <link name="stand">
+    <inertial>
+        <mass value="1000" />
+        <origin xyz="0 0 0.5" rpy="0 0 0" />
+        <inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0" izz="0.01" />
+    </inertial>
+    <visual>
+        <origin xyz="0 0 0.5" rpy="0 0 0" />
+        <geometry>
+            <cylinder length="1.0" radius="0.1" />
+        </geometry>
+    </visual>
+    <collision>
+        <origin xyz="0 0 0.5" rpy="0 0 0" />
+        <geometry>
+            <!-- <box size="0.2 0.2 1.0" /> -->
+            <cylinder length="1.0" radius="0.1" />
+        </geometry>
+    </collision>
+  </link>
+
+  <joint name="fixed" type="fixed">
+    <parent link="world"/>
+    <child link="stand"/>
+  </joint>  
+
+<!-- (1) UR5 (extracted from "ur_description/ur5_upload.launch" from "universal_robot" package-->
+
+  <!-- common stuff -->
+  <xacro:include filename="$(find ur_description)/urdf/common.gazebo.xacro" />
+
+  <!-- ur5 -->
+  <xacro:include filename="$(find ur_description)/urdf/ur5.urdf.xacro" />
+
+  <!-- arm -->
+  <xacro:ur5_robot prefix="" joint_limited="true"
+    shoulder_pan_lower_limit="${-pi}" shoulder_pan_upper_limit="${pi}"
+    shoulder_lift_lower_limit="${-pi}" shoulder_lift_upper_limit="${pi}"
+    elbow_joint_lower_limit="${-pi}" elbow_joint_upper_limit="${pi}"
+    wrist_1_lower_limit="${-pi}" wrist_1_upper_limit="${pi}"
+    wrist_2_lower_limit="${-pi}" wrist_2_upper_limit="${pi}"
+    wrist_3_lower_limit="${-pi}" wrist_3_upper_limit="${pi}"
+  />
+
+
+  <!-- <link name="world" /> -->
+
+  <joint name="stand_joint" type="fixed">
+    <parent link="stand" />
+    <child link = "base_link" />
+    <origin xyz="0.0 0.0 1.0" rpy="0.0 0.0 0.0" />
+  </joint>
+
+
+<!-- (2) Robotiq 3-finger gripper (Right Hand) (added by Inmo) -->
+  <!-- gripper -->
+  <xacro:include filename="$(find robotiq_description)/urdf/robotiq_hand.urdf.xacro" />
+
+  <!-- gripper spawn: linking the gripper to the arm end effector -->
+  <xacro:robotiq_hand prefix="r_" parent="ee_link" reflect="1">
+    <origin rpy="0 0 ${-pi/2.0}" xyz="0.051 0 0"/>
+  </xacro:robotiq_hand>
+
+  
+  <gazebo>
+    <!-- plugin for left RobotiQ hand -->
+    <plugin name="left_robotiq_hand_plugin" filename="libRobotiqHandPlugin.so">
+      <side>left</side>
+      <kp_position>10.0</kp_position>
+      <kd_position>0.5</kd_position>
+    </plugin>
+    <!-- plugin for right RobotiQ hand -->
+    <plugin name="right_robotiq_hand_plugin" filename="libRobotiqHandPlugin.so">
+      <side>right</side>
+      <kp_position>10.0</kp_position>
+      <kd_position>0.5</kd_position>
+    </plugin>
+  </gazebo>
+
+</robot>
