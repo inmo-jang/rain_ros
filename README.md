@@ -19,10 +19,10 @@ At the moment, this source file is a gazebo model for UR5 and Robotiq 3-finger g
 #### Dependencies
 The dependencies required are as follows: 
 
-(1) Universal robot package (https://bitbucket.org/inmojang/universal_robot)
+(1) Universal robot package (https://bitbucket.org/rain_epsrc/universal_robot/)
 
 
-(2) Robotiq 3-finger gripper package (https://inmojang@bitbucket.org/inmojang/robotiq.git)
+(2) Robotiq 3-finger gripper package (https://bitbucket.org/rain_epsrc/robotiq)
 
 
 Note: Some of the dependencies are originally from other repositories (please refer to each repo's git), but modified for this project. 
