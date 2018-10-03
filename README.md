@@ -6,6 +6,11 @@ At the moment, this source file is a gazebo model for UR5 and Robotiq 3-finger g
 
 ** Author/Maintainer: Inmo Jang (inmo.jang@manchester.ac.uk), Robotics for Extreme Environment Group, University of Manchester**
 
+## Version Information
+Version 1.1 uses effort_controllers for joint control of UR5. (Ver 1.0 uses position_controllers). 
+This update enables the gazebo model to pick and grasp an object in the gazebo environment. In Ver 1.0, this was not the case. 
+Instead, it becomes necessary to set PID gains, which were just set by trial and errors in this version. 
+
 ---
 ## Installation
 
