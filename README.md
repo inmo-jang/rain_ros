@@ -51,6 +51,35 @@ Launch the Gazebo simulator:
 
         roslaunch rain_gazebo ur5_robotiq.launch
 
+
+#### Control the arm
+
+##### Via LEAP Motion
+
+Execute below to see the sensed information in RViz:
+
+        roslaunch leap_motion demo.launch
+        
+Then, execute
+
+        rosrun ur_driver gazebo_teleop_leap.py
+        
+        
+
+##### Via Keyboard Teleoperation
+
+Execute below in the command line to control each joint using a keyboard: 
+
+        rosrun ur_driver gazebo_teleop_key.py
+
+
+Or you may control the position/orientation of the end effector by:
+
+        rosrun ur_driver gazebo_teleop_key_xyz.py
+        
+
+
+
 #### Control the gripper
 
 ##### Via Keyboard Teleoperation
@@ -90,20 +119,6 @@ Open fingers:
 
 
 
-
-#### Control the arm
-
-##### Via Keyboard Teleoperation
-
-Execute below in the command line to control each joint using a keyboard: 
-
-        rosrun ur_driver gazebo_teleop_key.py
-
-
-Or you may control the position/orientation of the end effector by:
-
-        rosrun ur_driver gazebo_teleop_key_xyz.py
-        
 
 
 ![picture](rain/UR5_robotiq.png)
