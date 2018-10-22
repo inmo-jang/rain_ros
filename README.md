@@ -45,7 +45,7 @@ This repository consists of following packages:
 
 
 ---
-## Usage
+## Usage: Use the Gazebo Model Only
 
 Launch the Gazebo simulator:
 
@@ -118,8 +118,15 @@ Open fingers:
         rostopic pub --once right_hand/command robotiq_s_model_control/SModel_robot_output {1,3,1,0,0,0,0,255,0,155,0,0,255,0,0,0,0,0,0}
 
 
-
-
-
 ![picture](rain/UR5_robotiq.png)
+
+## Usage: Use the Gazebo Model while intefacing with Unity via Rosbridge
+
+In the ROS side, launch the Gazebo simulator:
+
+        roslaunch rain_unity ur5_robotiq_unity.launch
+
+In the Unity side, run the scene with rosbridge. 
+
+
   
