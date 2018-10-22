@@ -136,7 +136,7 @@ In the Unity side, run the scene with rosbridge.
 #### Network Setting and Initialisation
 Assuming that a UR5 and a Robotiq 3-finger gripper are connected via Ethernet as:
 
-- UR5: 172.22.22.1
+- UR5: 172.22.22.2
 - Gripper: 192.168.1.2
         
 For setting up the network connection, please refer to
@@ -148,12 +148,32 @@ For setting up the network connection, please refer to
         
 (1) Bring up the UR5(which uses v3.X):
 
-        roslaunch ur_modern_driver ur5_bringup.launch robot_ip:=172.22.22.1
+- Ping test before bringing up: 
+
+        ping 172.22.22.2
+        
+- Bringing up:
+
+        roslaunch ur_modern_driver ur5_bringup.launch robot_ip:=172.22.22.2
+
+- Topic test after bringing up:
+
+        rostopic echo /joint_states
+        
         
 (2) Bring up the Gripper:
         
-        rosrun robotiq_s_model_control SModelTcpNode.py 192.168.1.11
+- Ping test before bringing up:
+
+        ping 192.168.1.2
         
+- Bringing up:
+
+        rosrun robotiq_s_model_control SModelTcpNode.py 192.168.1.11
+
+- Topic test after bringing up:
+
+        rostopic echo /SModelRobotInput
         
 
 #### Control the arm
