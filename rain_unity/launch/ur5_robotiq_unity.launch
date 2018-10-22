@@ -1,0 +1,16 @@
+﻿<launch>
+
+	<include file="$(find rosbridge_server)/launch/rosbridge_websocket.launch">
+		<param name="port" value="9090"/>
+	</include>
+
+	<include file="$(find rain_gazebo)/launch/ur5_robotiq.launch">
+	</include>
+
+	<node name="file_server" pkg="file_server" type="file_server" output="screen"/>
+
+	<!-- <node name="joy_to_twist" pkg="gazebo_simulation_scene" type="joy_to_twist.py" output="screen"/> -->
+
+	<!-- <node name="rqt_graph" pkg="rqt_graph" type="rqt_graph" output="screen"/> -->
+	
+</launch>
