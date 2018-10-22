@@ -45,7 +45,7 @@ This repository consists of following packages:
 
 
 ---
-## Usage
+## Usage: Use the Gazebo Model Only
 
 Launch the Gazebo simulator:
 
@@ -118,8 +118,90 @@ Open fingers:
         rostopic pub --once right_hand/command robotiq_s_model_control/SModel_robot_output {1,3,1,0,0,0,0,255,0,155,0,0,255,0,0,0,0,0,0}
 
 
-
-
-
 ![picture](rain/UR5_robotiq.png)
+
+--- 
+## Usage: Use the Gazebo Model while intefacing with Unity via Rosbridge
+
+In the ROS side, launch the Gazebo simulator:
+
+        roslaunch rain_unity ur5_robotiq_unity.launch
+
+In the Unity side, run the scene with rosbridge. 
+
+
+--- 
+## Usage: Use the real robot
+
+#### Network Setting and Initialisation
+Assuming that a UR5 and a Robotiq 3-finger gripper are connected via Ethernet as:
+
+- UR5: 172.22.22.2
+- Gripper: 192.168.1.2
+        
+For setting up the network connection, please refer to
+
+- UR5: https://github.com/qian256/ur5_setup
+- Robotiq Gripper: http://wiki.ros.org/robotiq/Tutorials/Control%20of%20an%20S-Model%20Gripper%20using%20the%20Modbus%20TCP%20Protocol
+
+
+        
+(1) Bring up the UR5(which uses v3.X):
+
+- Ping test before bringing up: 
+
+        ping 172.22.22.2
+        
+- Bringing up:
+
+        roslaunch ur_modern_driver ur5_bringup.launch robot_ip:=172.22.22.2
+
+- Topic test after bringing up:
+
+        rostopic echo /joint_states
+        
+        
+(2) Bring up the Gripper:
+        
+- Ping test before bringing up:
+
+        ping 192.168.1.2
+        
+- Bringing up:
+
+        rosrun robotiq_s_model_control SModelTcpNode.py 192.168.1.11
+
+- Topic test after bringing up:
+
+        rostopic echo /SModelRobotInput
+        
+
+#### Control the arm
+
+##### Via LEAP Motion
+
+Execute below to see the sensed information in RViz:
+
+        roslaunch leap_motion demo.launch
+        
+Then, execute
+
+        rosrun ur_driver ur5_teleop_leap.py
+        
+        
+##### Via Keyboard Teleoperation
+
+You may control the position/orientation of the end effector by:
+
+        rosrun ur_driver ur5_teleop_key_xyz.py
+        
+
+
+#### Control the gripper
+
+##### Via Keyboard Teleoperation
+
+To control the gripper, in another terminal, excute below in the command line:
+        
+        rosrun robotiq_s_model_control SModelController.py
   
