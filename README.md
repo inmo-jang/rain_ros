@@ -45,7 +45,7 @@ This repository consists of following packages:
 
 
 ---
-## Usage: Use the Gazebo Model Only
+## Usage A: Use the Gazebo Model Only
 
 Launch the Gazebo simulator:
 
@@ -121,7 +121,7 @@ Open fingers:
 ![picture](rain/UR5_robotiq.png)
 
 --- 
-## Usage: Use the Gazebo Model while intefacing with Unity via Rosbridge
+## Usage B: Use the Gazebo Model while intefacing with Unity via Rosbridge
 
 In the ROS side, launch the Gazebo simulator:
 
@@ -129,9 +129,18 @@ In the ROS side, launch the Gazebo simulator:
 
 In the Unity side, run the scene with rosbridge. 
 
+In the ROS side again, launch one of the following controller nodes:
 
+- XYZ control when closing your hand:
+
+        rosrun ur_driver gazebo_teleop_leap_vr.py
+        
+- Orientation control (with the end effector position fixed):
+
+        rosrun ur_driver gazebo_teleop_leap_ori_vr.py
+        
 --- 
-## Usage: Use the real robot
+## Usage C: Use the real robot
 
 #### Network Setting and Initialisation
 Assuming that a UR5 and a Robotiq 3-finger gripper are connected via Ethernet as:
