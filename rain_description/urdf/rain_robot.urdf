@@ -369,7 +369,7 @@
   </joint>
   <!-- joint attaching parent link to robotiq hand -->
   <joint name="r_robotiq_hand_joint" type="fixed">
-    <origin rpy="0 0 -1.57079632679" xyz="0.051 0 0"/>
+    <origin rpy="0 2.35619449019 -1.57079632679" xyz="0.051 0 0"/>
     <parent link="ee_link"/>
     <child link="r_palm"/>
   </joint>
