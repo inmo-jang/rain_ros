@@ -133,15 +133,16 @@ In the ROS side again, launch one of the following controller nodes:
 
 - Mode 0 Control Node
 
-        rosrun ur_driverazebo_teleop_leap_mode0_vr.py
+        rosrun ur_driver gazebo_teleop_leap_mode0_vr.py
+
 
 - Mode 1 Control Node
 
-        rosrun ur_driverazebo_teleop_leap_mode1_vr.py
+        rosrun ur_driver gazebo_teleop_leap_mode1_vr.py
 
 - Gripper Control Mode (Only being activated in Mode 1)
 
-        rosrun robotiq_sodel_control SModelController_gazebo_vr.py
+        rosrun robotiq_s_model_control SModelController_gazebo_vr.py
 
 
 Result is : https://www.youtube.com/watch?v=TQSg8v2cMcE
