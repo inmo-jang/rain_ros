@@ -127,18 +127,27 @@ In the ROS side, launch the Gazebo simulator:
 
         roslaunch rain_unity ur5_robotiq_unity.launch
 
-In the Unity side, run the scene with rosbridge. 
+In the Unity side, run the scene (*Scene_181109.unity*) with rosbridge. 
 
 In the ROS side again, launch one of the following controller nodes:
 
-- XYZ control when closing your hand:
+- Mode 0 Control Node
 
-        rosrun ur_driver gazebo_teleop_leap_vr.py
-        
-- Orientation control (with the end effector position fixed):
+        rosrun ur_driver gazebo_teleop_leap_mode0_vr.py
 
-        rosrun ur_driver gazebo_teleop_leap_ori_vr.py
-        
+
+- Mode 1 Control Node
+
+        rosrun ur_driver gazebo_teleop_leap_mode1_vr.py
+
+- Gripper Control Mode (Only being activated in Mode 1)
+
+        rosrun robotiq_s_model_control SModelController_gazebo_vr.py
+
+
+Result is : https://www.youtube.com/watch?v=TQSg8v2cMcE
+
+
 --- 
 ## Usage C: Use the real robot
 
