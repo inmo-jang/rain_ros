@@ -223,3 +223,27 @@ To control the gripper, in another terminal, excute below in the command line:
         
         rosrun robotiq_s_model_control SModelController.py
   
+--- 
+## Usage C-2: Intefacing with Unity via Rosbridge
+
+After setting up the network connection as described in C-1, then, launch the following launch file in the ROS side:
+
+        roslaunch rain_unity ur5_robotiq_unity_real.launch
+
+In the Unity side, run the scene (*Scene_181109.unity*) with rosbridge. And, we need to deactivate some publishers/subscribers of "Rosconnecter", otherwise overflow errors come up. 
+In the ROS side, 
+
+In the ROS side again, launch one of the following controller nodes:
+
+- Mode 0 Control Node
+
+        rosrun ur_driver ur5_teleop_leap_mode0_vr.py
+
+
+- Mode 1 Control Node (under development)
+
+        
+
+- Gripper Control Mode (Only being activated in Mode 1)
+
+        rosrun robotiq_s_model_control SModelController_vr.py  
