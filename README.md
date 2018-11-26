@@ -213,7 +213,12 @@ You may control the position/orientation of the end effector by:
 
         rosrun ur_driver ur5_teleop_key_xyz.py
         
+##### Via Joystick
 
+Please refer to https://bitbucket.org/inmojang/jog_arm/src/master/README.md
+
+
+        
 
 #### Control the gripper
 
