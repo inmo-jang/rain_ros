@@ -260,7 +260,7 @@ According to *ur_modern_driver*, we can control a UR using joint velocities via 
 
 - Mode 0 Control Node
 
-        rosrun ur_driver ur5_teleop_leap_vel_mode0.py
+        rosrun ur_driver ur5_teleop_leap_vel_mode0.py real
         
 - Mode 1 Control Node (Under Development)
 
@@ -269,6 +269,11 @@ You can use this control node for the gazebo model. In that case, we need an int
 Thus, after launching the gazebo model, you need to run
 
         rosrun ur_driver gazebo_joint_speed_interface.py
+       
+Then, For Mode 0, 
+
+        rosrun ur_driver ur5_teleop_leap_vel_mode0.py gazebo
         
+
 
         
