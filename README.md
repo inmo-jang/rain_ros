@@ -245,10 +245,30 @@ In the ROS side again, launch one of the following controller nodes:
         rosrun ur_driver ur5_teleop_leap_mode0_vr.py
 
 
-- Mode 1 Control Node (under development)
+- Mode 1 Control Node 
 
-        
+        rosrun ur_driver ur5_teleop_leap_mode1_vr.py
 
 - Gripper Control Mode (Only being activated in Mode 1)
 
         rosrun robotiq_s_model_control SModelController_vr.py  
+        
+
+## Using *joint_speed* topic
+
+According to *ur_modern_driver*, we can control a UR using joint velocities via *joint_speed* topic. 
+
+- Mode 0 Control Node
+
+        rosrun ur_driver ur5_teleop_leap_vel_mode0.py
+        
+- Mode 1 Control Node (Under Development)
+
+
+You can use this control node for the gazebo model. In that case, we need an interface to the UR gazebo model because it currently accepts a desired joint position as an input. 
+Thus, after launching the gazebo model, you need to run
+
+        rosrun ur_driver gazebo_joint_speed_interface.py
+        
+
+        
