@@ -15,7 +15,7 @@ According to *ur_modern_driver*, we can control a UR using joint velocities via 
 ### Demo 1. Teleoperation of a real UR5 via VR/LEAP (via joint_speed)
 
 
-(1) Bring up 
+#### (1) Bring up 
 
 Bring up the UR5(which uses v3.X):
 
@@ -27,7 +27,7 @@ Bring up the Gripper:
         rosrun robotiq_s_model_control SModelTcpNode.py 192.168.1.11
 
 
-(2) Bridge ROS and Unity
+#### (2) Bridge ROS and Unity
 
 launch the following launch file (rosbridge):
 
@@ -37,28 +37,28 @@ launch the following launch file (rosbridge):
 In the Unity side, run the scene (*Scene_181109.unity*) with rosbridge. And, we need to deactivate some publishers/subscribers of "Rosconnecter", otherwise overflow errors come up. 
 
 
-(3) Run Control Nodes
+#### (3) Run Control Nodes
 
 In the ROS side again, launch one of the following controller nodes:
 
-- Mode 0 Control Node
+- Mode 0 Control Node (You should put additoinal argument 'gazebo' or 'real')
 
-        rosrun ur_driver ur5_teleop_vel_mode0.py
+        rosrun ur_driver ur5_teleop_vel_mode0.py [gazebo or real]
 
 - Mode 1 Control Node 
 
-        rosrun ur_driver ur5_teleop_vel_mode1.py
+        rosrun ur_driver ur5_teleop_vel_mode1.py [gazebo or real] 
 
 - Gripper Control Mode (Only being activated in Mode 1)
 
-        rosrun robotiq_s_model_control SModelController_vr.py  
+        rosrun robotiq_s_model_control SModelController_vr.py [gazebo or real] 
         
 
 ### Demo 2-1. Teleoperation of a Gazebo UR5 via VR/LEAP (via joint_speed)
 
 This way is to enable the gazebo model to have the same interfaces as the real robot does, by using **gazebo_joint_speed_interface.py**. 
 
-(1) Bring up the Gazebo robot
+#### (1) Bring up the Gazebo robot
 
 In the ROS side, launch the Gazebo simulator:
 
@@ -69,7 +69,7 @@ Thus, after launching the gazebo model, you need to run
 
         rosrun ur_driver gazebo_joint_speed_interface.py
 
-Then, follow (2) and (3) in Demo 1.
+#### Then, follow (2) and (3) in Demo 1.
 
 
 
@@ -101,7 +101,7 @@ In the ROS side again, launch one of the following controller nodes:
 Result is : https://www.youtube.com/watch?v=TQSg8v2cMcE
 
 
-Please refer to branch **ver1.1** for more detailed description.  
+Please refer to branch **ver1.1** for more detailed description (e.g., how to set the networks of the robot/gripper, etc.).  
         
 
 
