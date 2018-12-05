@@ -6,122 +6,75 @@ At the moment, this source file is a gazebo model for UR5 and Robotiq 3-finger g
 
 ** Author/Maintainer: Inmo Jang (inmo.jang@manchester.ac.uk), Robotics for Extreme Environment Group, University of Manchester**
 
-## Version Information
-Version 1.1 uses effort_controllers for joint control of UR5. (Ver 1.0 uses position_controllers). 
-This update enables the gazebo model to pick and grasp an object in the gazebo environment. In Ver 1.0, this was not the case. 
-Instead, it becomes necessary to set PID gains, which were just set by trial and errors in this version. 
 
----
-## Installation
+## Key Information for Demo
 
-### Environment setting
-
-- Install ROS as in http://wiki.ros.org/kinetic/Installation/Ubuntu
-- Install Gazebo ROS pakcage as in http://gazebosim.org/tutorials?tut=ros_installing (Instruction for ROS Kinetic)
-
-### Building from Source
-
-#### Dependencies
-The dependencies required are as follows: 
-
-(1) Universal robot package (https://bitbucket.org/rain_epsrc/universal_robot/)
+According to *ur_modern_driver*, we can control a UR using joint velocities via *joint_speed* topic. 
 
 
-(2) Robotiq 3-finger gripper package (https://bitbucket.org/rain_epsrc/robotiq)
+### Demo 1. Teleoperation of a real UR5 via VR/LEAP (via joint_speed)
 
 
-Note: Some of the dependencies are originally from other repositories (please refer to each repo's git), but modified for this project. 
+(1) Bring up 
 
+Bring up the UR5(which uses v3.X):
 
-
-
-### Packages Overview
-
-This repository consists of following packages:
-
-* ***rain*** the meta-package for the teleoperation system meta package
-* ***rain_description*** contains the urdf description of the integrated robot (UR5 + the gripper).
-* ***rain_gazebo*** contains the launch file for the gazebo simulator.
-
-
----
-## Usage A: Use the Gazebo Model Only
-
-Launch the Gazebo simulator:
-
-        roslaunch rain_gazebo ur5_robotiq.launch
-
-
-#### Control the arm
-
-##### Via LEAP Motion
-
-Execute below to see the sensed information in RViz:
-
-        roslaunch leap_motion demo.launch
-        
-Then, execute
-
-        rosrun ur_driver gazebo_teleop_leap.py
+        roslaunch ur_modern_driver ur5_bringup.launch robot_ip:=172.22.22.2
         
         
+Bring up the Gripper:
 
-##### Via Keyboard Teleoperation
-
-Execute below in the command line to control each joint using a keyboard: 
-
-        rosrun ur_driver gazebo_teleop_key.py
+        rosrun robotiq_s_model_control SModelTcpNode.py 192.168.1.11
 
 
-Or you may control the position/orientation of the end effector by:
+(2) Bridge ROS and Unity
 
-        rosrun ur_driver gazebo_teleop_key_xyz.py
+launch the following launch file (rosbridge):
+
+        roslaunch rain_unity ur5_robotiq_unity_real.launch
+
+
+In the Unity side, run the scene (*Scene_181109.unity*) with rosbridge. And, we need to deactivate some publishers/subscribers of "Rosconnecter", otherwise overflow errors come up. 
+
+
+(3) Run Control Nodes
+
+In the ROS side again, launch one of the following controller nodes:
+
+- Mode 0 Control Node
+
+        rosrun ur_driver ur5_teleop_vel_mode0.py
+
+- Mode 1 Control Node 
+
+        rosrun ur_driver ur5_teleop_vel_mode1.py
+
+- Gripper Control Mode (Only being activated in Mode 1)
+
+        rosrun robotiq_s_model_control SModelController_vr.py  
         
 
+### Demo 2-1. Teleoperation of a Gazebo UR5 via VR/LEAP (via joint_speed)
+
+This way is to enable the gazebo model to have the same interfaces as the real robot does, by using **gazebo_joint_speed_interface.py**. 
+
+(1) Bring up the Gazebo robot
+
+In the ROS side, launch the Gazebo simulator:
+
+        roslaunch rain_unity ur5_robotiq_unity.launch
+
+Here, we need an interface to the UR gazebo model because it currently accepts a desired joint position as an input. 
+Thus, after launching the gazebo model, you need to run
+
+        rosrun ur_driver gazebo_joint_speed_interface.py
+
+Then, follow (2) and (3) in Demo 1.
 
 
-#### Control the gripper
-
-##### Via Keyboard Teleoperation
-
-To control the gripper, in another terminal, excute below in the command line:
-        
-        rosrun robotiq_s_model_control SModelController_gazebo.py
-
-The gripper has Basic/Pinch/Wide/Scissor modes, and the fingers can also be individually controlled. 
 
 
-##### Via ***rostopic pub*** 
-
-Closing the hand halfway:
-
-        rostopic pub --once right_hand/command robotiq_s_model_control/SModel_robot_output {1,0,1,0,0,0,127,255,0,155,0,0,255,0,0,0,0,0,0}
-
-Fully open the hand:
-
-        rostopic pub --once right_hand/command robotiq_s_model_control/SModel_robot_output {1,0,1,0,0,0,0,255,0,155,0,0,255,0,0,0,0,0,0}
-
-Change the grasping mode to pinch and close the gripper:
-
-        rostopic pub --once right_hand/command robotiq_s_model_control/SModel_robot_output {1,1,1,0,0,0,255,255,0,155,0,0,255,0,0,0,0,0,0}
-
-Switch to wide mode and fully open the hand:
-
-        rostopic pub --once right_hand/command robotiq_s_model_control/SModel_robot_output {1,2,1,0,0,0,0,255,0,155,0,0,255,0,0,0,0,0,0}
-
-Change to scissor mode and close the fingers:
-
-        rostopic pub --once right_hand/command robotiq_s_model_control/SModel_robot_output {1,3,1,0,0,0,255,255,0,155,0,0,255,0,0,0,0,0,0}
-
-Open fingers:
-
-        rostopic pub --once right_hand/command robotiq_s_model_control/SModel_robot_output {1,3,1,0,0,0,0,255,0,155,0,0,255,0,0,0,0,0,0}
-
-
-![picture](rain/UR5_robotiq.png)
-
---- 
-## Usage B: Use the Gazebo Model while intefacing with Unity via Rosbridge
+### Demo 2-2. Teleoperation of a Gazebo UR5 via VR/LEAP (via action client. Nov2018 version)
 
 In the ROS side, launch the Gazebo simulator:
 
@@ -148,132 +101,9 @@ In the ROS side again, launch one of the following controller nodes:
 Result is : https://www.youtube.com/watch?v=TQSg8v2cMcE
 
 
---- 
-## Usage C: Use the real robot
-
-#### Network Setting and Initialisation
-Assuming that a UR5 and a Robotiq 3-finger gripper are connected via Ethernet as:
-
-- UR5: 172.22.22.2
-- Gripper: 192.168.1.2
-        
-For setting up the network connection, please refer to
-
-- UR5: https://github.com/qian256/ur5_setup
-- Robotiq Gripper: http://wiki.ros.org/robotiq/Tutorials/Control%20of%20an%20S-Model%20Gripper%20using%20the%20Modbus%20TCP%20Protocol
-
-
-        
-(1) Bring up the UR5(which uses v3.X):
-
-- Ping test before bringing up: 
-
-        ping 172.22.22.2
-        
-- Bringing up:
-
-        roslaunch ur_modern_driver ur5_bringup.launch robot_ip:=172.22.22.2
-
-- Topic test after bringing up:
-
-        rostopic echo /joint_states
-        
-        
-(2) Bring up the Gripper:
-        
-- Ping test before bringing up:
-
-        ping 192.168.1.2
-        
-- Bringing up:
-
-        rosrun robotiq_s_model_control SModelTcpNode.py 192.168.1.11
-
-- Topic test after bringing up:
-
-        rostopic echo /SModelRobotInput
+Please refer to branch **ver1.1** for more detailed description.  
         
 
-#### Control the arm
-
-##### Via LEAP Motion
-
-Execute below to see the sensed information in RViz:
-
-        roslaunch leap_motion demo.launch
-        
-Then, execute
-
-        rosrun ur_driver ur5_teleop_leap.py
-        
-        
-##### Via Keyboard Teleoperation
-
-You may control the position/orientation of the end effector by:
-
-        rosrun ur_driver ur5_teleop_key_xyz.py
-        
-##### Via Joystick
-
-Please refer to https://bitbucket.org/inmojang/jog_arm/src/master/README.md
-
-
-        
-
-#### Control the gripper
-
-##### Via Keyboard Teleoperation
-
-To control the gripper, in another terminal, excute below in the command line:
-        
-        rosrun robotiq_s_model_control SModelController.py
-  
---- 
-## Usage C-2: Intefacing with Unity via Rosbridge
-
-After setting up the network connection as described in C-1, then, launch the following launch file in the ROS side:
-
-        roslaunch rain_unity ur5_robotiq_unity_real.launch
-
-In the Unity side, run the scene (*Scene_181109.unity*) with rosbridge. And, we need to deactivate some publishers/subscribers of "Rosconnecter", otherwise overflow errors come up. 
-In the ROS side, 
-
-In the ROS side again, launch one of the following controller nodes:
-
-- Mode 0 Control Node
-
-        rosrun ur_driver ur5_teleop_leap_mode0_vr.py
-
-
-- Mode 1 Control Node 
-
-        rosrun ur_driver ur5_teleop_leap_mode1_vr.py
-
-- Gripper Control Mode (Only being activated in Mode 1)
-
-        rosrun robotiq_s_model_control SModelController_vr.py  
-        
-
-## Using *joint_speed* topic
-
-According to *ur_modern_driver*, we can control a UR using joint velocities via *joint_speed* topic. 
-
-- Mode 0 Control Node
-
-        rosrun ur_driver ur5_teleop_leap_vel_mode0.py real
-        
-- Mode 1 Control Node (Under Development)
-
-
-You can use this control node for the gazebo model. In that case, we need an interface to the UR gazebo model because it currently accepts a desired joint position as an input. 
-Thus, after launching the gazebo model, you need to run
-
-        rosrun ur_driver gazebo_joint_speed_interface.py
-       
-Then, For Mode 0, 
-
-        rosrun ur_driver ur5_teleop_leap_vel_mode0.py gazebo
-        
 
 
         
