@@ -43,11 +43,11 @@ In the ROS side again, launch one of the following controller nodes:
 
 - Mode 0 Control Node (You should put additoinal argument 'gazebo' or 'real')
 
-        rosrun ur_driver ur5_teleop_vel_mode0.py [gazebo or real]
+        rosrun ur_driver ur5_teleop_leap_vel_mode0.py [gazebo or real]
 
 - Mode 1 Control Node 
 
-        rosrun ur_driver ur5_teleop_vel_mode1.py [gazebo or real] 
+        rosrun ur_driver ur5_teleop_leap_vel_mode1.py [gazebo or real] 
 
 - Gripper Control Mode (Only being activated in Mode 1)
 
