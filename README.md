@@ -1,4 +1,7 @@
 # Haptic Teleoperation in RAIN hub project
+
+This is a back-up repo (demo for RAIN theme meeting on Nov 2018): **action client** interface is used for controlling UR5. 
+
 ---
 ## Overview
 This is a repository of visual/haptic-teleoperated industrial robotic manipulators in RAIN hub project (https://rainhub.org.uk/). 
