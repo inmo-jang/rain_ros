@@ -62,7 +62,7 @@ This way is to enable the gazebo model to have the same interfaces as the real r
 
 In the ROS side, launch the Gazebo simulator:
 
-        roslaunch rain_unity ur5_robotiq_unity.launch
+        roslaunch rain_gazebo ur5_robotiq.launch
 
 Here, we need an interface to the UR gazebo model because it currently accepts a desired joint position as an input. 
 Thus, after launching the gazebo model, you need to run
