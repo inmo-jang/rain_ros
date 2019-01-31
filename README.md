@@ -1,5 +1,38 @@
 # Haptic Teleoperation in RAIN hub project
 ---
+## Instruction for Demo of Dec 2019
+
+This branch was used to do the first-year demonstration as in https://youtu.be/lu-0yrl9J5g. 
+For demo, follow the instruction below. 
+
+### (1) Preparation in ROS
+
+Open networks, Run joint_speed publishing rate regulator, and unity..
+
+	roslaunch ur_modern_driver ur5_bringup.launch robot_ip:=172.22.22.2
+
+	rosrun robotiq_s_model_control SModelTcpNode.py 192.168.1.11
+
+	roslaunch usb_cam usb_cam_1.launch
+
+	rosrun ur_driver ur5_joint_speed_regulator.py
+
+	roslaunch rain_unity ur5_robotiq_unity_real.launch
+
+### (2) Run Control Nodes in ROS, while Unity is running 
+
+After running rain_unity3d in Unity (Windows), do the followings
+
+	rosrun ur_driver ur5_teleop_leap_vel_mode0.py real
+
+	rosrun ur_driver ur5_teleop_leap_vel_mode1.py real
+
+	rosrun robotiq_s_model_control SModelController_vr.py real
+
+
+
+
+---
 ## Overview
 This is a repository of visual/haptic-teleoperated industrial robotic manipulators in RAIN hub project (https://rainhub.org.uk/). 
 At the moment, this source file is a gazebo model for UR5 and Robotiq 3-finger gripper. 
@@ -10,6 +43,11 @@ At the moment, this source file is a gazebo model for UR5 and Robotiq 3-finger g
 ## Key Information for Demo
 
 According to *ur_modern_driver*, we can control a UR using joint velocities via *joint_speed* topic. 
+
+
+
+
+
 
 
 ### Demo 1. Teleoperation of a real UR5 via VR/LEAP (via joint_speed)
