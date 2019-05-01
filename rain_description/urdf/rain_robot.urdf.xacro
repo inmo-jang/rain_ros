@@ -70,7 +70,7 @@
 
   <!-- camera plugin -->
   <gazebo reference="camera_link">
-    <sensor type="camera" name="camera1">
+    <sensor type="camera" name="usb_cam_1">
       <update_rate>30.0</update_rate>
       <camera name="head">
         <horizontal_fov>1.3962634</horizontal_fov>
@@ -95,7 +95,7 @@
       <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
         <alwaysOn>true</alwaysOn>
         <updateRate>0.0</updateRate>
-        <cameraName>camera1</cameraName>
+        <cameraName>usb_cam_1</cameraName>
         <imageTopicName>image_raw</imageTopicName>
         <cameraInfoTopicName>camera_info</cameraInfoTopicName>
         <frameName>camera_link</frameName>
@@ -144,7 +144,7 @@
 
   <!-- camera plugin -->
   <gazebo reference="camera_link_front">
-    <sensor type="camera" name="camera2">
+    <sensor type="camera" name="usb_cam_2">
       <update_rate>30.0</update_rate>
       <camera name="head">
         <horizontal_fov>1.3962634</horizontal_fov>
@@ -169,7 +169,7 @@
       <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
         <alwaysOn>true</alwaysOn>
         <updateRate>0.0</updateRate>
-        <cameraName>camera2</cameraName>
+        <cameraName>usb_cam_2</cameraName>
         <imageTopicName>image_raw</imageTopicName>
         <cameraInfoTopicName>front_camera_info</cameraInfoTopicName>
         <frameName>front_camera_link</frameName>
@@ -219,7 +219,7 @@
 
   <!-- camera plugin -->
   <gazebo reference="camera_link_top">
-    <sensor type="camera" name="camera3">
+    <sensor type="camera" name="usb_cam_3">
       <update_rate>30.0</update_rate>
       <camera name="head">
         <horizontal_fov>1.3962634</horizontal_fov>
@@ -244,7 +244,7 @@
       <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
         <alwaysOn>true</alwaysOn>
         <updateRate>0.0</updateRate>
-        <cameraName>camera3</cameraName>
+        <cameraName>usb_cam_3</cameraName>
         <imageTopicName>image_raw</imageTopicName>
         <cameraInfoTopicName>top_camera_info</cameraInfoTopicName>
         <frameName>top_camera_link</frameName>
