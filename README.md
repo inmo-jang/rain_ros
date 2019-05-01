@@ -139,7 +139,7 @@ In the ROS side again, launch one of the following controller nodes:
 Result is : https://www.youtube.com/watch?v=TQSg8v2cMcE
 
 
-Please refer to branch **ver1.1** for more detailed description (e.g., how to set the networks of the robot/gripper, etc.).  
+Please refer to branch **ver1.1 to ver 2.0** for more detailed description (e.g., how to set the networks of the robot/gripper, etc.).  
         
 
 
