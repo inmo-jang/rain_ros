@@ -106,6 +106,8 @@ Here, we need an interface to the UR gazebo model because it currently accepts a
 Thus, after launching the gazebo model, you need to run
 
         rosrun ur_driver gazebo_joint_speed_interface.py
+        
+        rosrun ur_driver ur5_joint_speed_regulator.py
 
 #### Then, follow (2) and (3) in Demo 1.
 
