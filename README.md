@@ -3,6 +3,7 @@
 ## Instruction for Demo of Dec 2019
 
 This branch was used to do the first-year demonstration as in https://youtu.be/lu-0yrl9J5g. 
+
 You need to clone all the necessary packages (universal_robot, robotiq, etc.) with the branch "release/demo_ver1.0".
 
 For demo, follow the instruction below. 
