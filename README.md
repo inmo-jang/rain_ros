@@ -1,8 +1,10 @@
-# Haptic Teleoperation in RAIN hub project
----
-## Instruction for Demo of Dec 2019
+# Haptic Teleoperation in RAIN hub project (Phase 2)
 
-This branch was used to do the first-year demonstration as in https://youtu.be/lu-0yrl9J5g. 
+---
+## Instruction for Demo
+
+Currently, this branch is in the middle of integrating CyberGrasp/CyberGlove. However, I am trying to keep the existing interfaces as they are for Phase 1 (release/demo_ver1.0). 
+
 For demo, follow the instruction below. 
 
 ### (1) Preparation in ROS
