@@ -30,6 +30,9 @@ After running rain_unity3d in Unity (Windows), do the followings
 	rosrun ur_driver ur5_teleop_leap_vel_mode1.py real
 
 	rosrun robotiq_s_model_control SModelController_vr.py real
+    
+    rosrun robotiq_s_model_control HapticController.py
+
 
 
 
@@ -93,6 +96,11 @@ In the ROS side again, launch one of the following controller nodes:
 
         rosrun robotiq_s_model_control SModelController_vr.py [gazebo or real] 
         
+
+Then, launch the following to get the haptic feedback from the gripper (This only works for the real robot):
+
+        rosrun robotiq_s_model_control HapticController.py
+
 
 ### Demo 2-1. Teleoperation of a Gazebo UR5 via VR/LEAP (via joint_speed)
 
