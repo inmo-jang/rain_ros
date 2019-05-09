@@ -5,7 +5,7 @@
 
 Currently, this branch is in the middle of integrating CyberGrasp/CyberGlove. However, I am trying to keep the existing interfaces as they are for Phase 1 (release/demo_ver1.0). 
 
-For unity, you need to clone the respository rain_unity3d-phase2
+For unity, you need to clone the respository: https://bitbucket.org/inmojang/rain_unity3d-phase2/
 
 For demo, follow the instruction below. 
 
