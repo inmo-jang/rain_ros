@@ -27,7 +27,7 @@ Open networks, Run joint_speed publishing rate regulator, and unity..
 
 After running rain_unity3d in Unity (Windows), do the followings
 
-	rosrun ur_driver ur5_teleop_leap_vel_mode0.py real
+	rosrun ur_driver ur5_teleop_leap_vel_mode0.py real (In fact, it might not be needed?)
 
 	rosrun ur_driver ur5_teleop_leap_vel_mode1.py real
 
