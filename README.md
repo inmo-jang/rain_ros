@@ -7,6 +7,13 @@ Currently, this branch is in the middle of integrating CyberGrasp/CyberGlove. Ho
 
 For unity, you need to clone the respository: https://bitbucket.org/inmojang/rain_unity3d-phase2/
 
+<<<<<<< HEAD
+=======
+This branch was used to do the first-year demonstration as in https://youtu.be/lu-0yrl9J5g. 
+
+You need to clone all the necessary packages (universal_robot, robotiq, etc.) with the branch "release/demo_ver1.0".
+
+>>>>>>> remotes/origin/release/demo_ver1.0
 For demo, follow the instruction below. 
 
 ### (1) Preparation in ROS
