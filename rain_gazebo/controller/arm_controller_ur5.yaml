@@ -1,0 +1,111 @@
+# Joint Trajectory Controller - position based -------------------------------
+# (This was originally existing in ur_gazebo, but its name was just "arm_controller")
+pos_based_pos_traj_controller:
+  type: position_controllers/JointTrajectoryController
+  joints:
+     - shoulder_pan_joint
+     - shoulder_lift_joint
+     - elbow_joint
+     - wrist_1_joint
+     - wrist_2_joint
+     - wrist_3_joint
+  constraints:
+      goal_time: 0.6
+      stopped_velocity_tolerance: 0.05
+      shoulder_pan_joint: {trajectory: 0.1, goal: 0.1}
+      shoulder_lift_joint: {trajectory: 0.1, goal: 0.1}
+      elbow_joint: {trajectory: 0.1, goal: 0.1}
+      wrist_1_joint: {trajectory: 0.1, goal: 0.1}
+      wrist_2_joint: {trajectory: 0.1, goal: 0.1}
+      wrist_3_joint: {trajectory: 0.1, goal: 0.1}
+  stop_trajectory_duration: 0.5
+  state_publish_rate:  125 # Changed from 10 (125 is the value set in ur_moder_driver)
+  action_monitor_rate: 10
+
+# # Joint Trajectory Controller - velocity based -------------------------------
+# # (Copied from ur_modern_driver)  
+# vel_based_pos_traj_controller:
+#    type: velocity_controllers/JointTrajectoryController
+#    joints:
+#      - shoulder_pan_joint
+#      - shoulder_lift_joint
+#      - elbow_joint
+#      - wrist_1_joint
+#      - wrist_2_joint
+#      - wrist_3_joint
+#    constraints:
+#       goal_time: 0.6
+#       stopped_velocity_tolerance: 0.05
+#       shoulder_pan_joint: {trajectory: 0.1, goal: 0.1}
+#       shoulder_lift_joint: {trajectory: 0.1, goal: 0.1}
+#       elbow_joint: {trajectory: 0.1, goal: 0.1}
+#       wrist_1_joint: {trajectory: 0.1, goal: 0.1}
+#       wrist_2_joint: {trajectory: 0.1, goal: 0.1}
+#       wrist_3_joint: {trajectory: 0.1, goal: 0.1}
+#    stop_trajectory_duration: 0.5
+#    state_publish_rate:  125
+#    action_monitor_rate: 10
+#    gains:
+#       #!!These values are useable, but maybe not optimal
+#       shoulder_pan_joint: {p: 1.2,  i: 0.0, d: 0.1, i_clamp: 1}
+#       shoulder_lift_joint: {p: 1.2,  i: 0.0, d: 0.1, i_clamp: 1}
+#       elbow_joint: {p: 1.2,  i: 0.0, d: 0.1, i_clamp: 1}
+#       wrist_1_joint: {p: 1.2,  i: 0.0, d: 0.1, i_clamp: 1}
+#       wrist_2_joint: {p: 1.2,  i: 0.0, d: 0.1, i_clamp: 1}
+#       wrist_3_joint: {p: 1.2,  i: 0.0, d: 0.1, i_clamp: 1}
+
+#    # state_publish_rate:  50 # Defaults to 50
+#    # action_monitor_rate: 20 # Defaults to 20
+#    #hold_trajectory_duration: 0 # Defaults to 0.5
+
+# # Effort Controller (Made by Inmo to address Gazebo Grasping Issue. See: https://www.youtube.com/watch?v=JO5NH0GR3qQ) ---------------------------------------
+# eff_based_pos_traj_controller:
+#   type: effort_controllers/JointTrajectoryController
+#   joints:
+#      - shoulder_pan_joint
+#      - shoulder_lift_joint
+#      - elbow_joint
+#      - wrist_1_joint
+#      - wrist_2_joint
+#      - wrist_3_joint
+#   constraints:
+#       goal_time: 1
+#       stopped_velocity_tolerance: 0.05
+#       shoulder_pan_joint: {trajectory: 0.005, goal: 0.005}
+#       shoulder_lift_joint: {trajectory: 0.005, goal: 0.005}
+#       elbow_joint: {trajectory: 0.005, goal: 0.005}
+#       wrist_1_joint: {trajectory: 0.005, goal: 0.005}
+#       wrist_2_joint: {trajectory: 0.005, goal: 0.005}
+#       wrist_3_joint: {trajectory: 0.005, goal: 0.005}
+#   stop_trajectory_duration: 0.5
+#   state_publish_rate:  250
+#   action_monitor_rate: 125
+#   gains: # Required because we're controlling an effort interface
+#     shoulder_pan_joint: {p: 2000,  d: 200, i: 0, i_clamp: 0}
+#     shoulder_lift_joint: {p: 2000,  d: 200, i: 0, i_clamp: 0}
+#     elbow_joint: {p: 2000,  d: 200, i: 0, i_clamp: 0}
+#     wrist_1_joint: {p: 2000,  d: 200, i: 0, i_clamp: 0}
+#     wrist_2_joint: {p: 2000,  d: 200, i: 0, i_clamp: 0}
+#     wrist_3_joint: {p: 2000,  d: 200, i: 0, i_clamp: 0} 
+
+# (Probably) Pass an array of joint angles directly to the joints (This was originally in ur_gazebo)
+joint_group_position_controller:
+  type: position_controllers/JointGroupPositionController
+  joints:
+     - shoulder_pan_joint
+     - shoulder_lift_joint
+     - elbow_joint
+     - wrist_1_joint
+     - wrist_2_joint
+     - wrist_3_joint
+
+# Pass an array of joint velocities directly to the joints (This is the same as ur_modern_driver)
+joint_group_vel_controller:
+   type: velocity_controllers/JointGroupVelocityController
+   joints:
+     - shoulder_pan_joint
+     - shoulder_lift_joint
+     - elbow_joint
+     - wrist_1_joint
+     - wrist_2_joint
+     - wrist_3_joint
