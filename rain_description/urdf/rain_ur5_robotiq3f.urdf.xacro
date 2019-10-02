@@ -44,7 +44,7 @@
   <xacro:include filename="$(find ur_description)/urdf/ur5.urdf.xacro" />
  
   <!-- 3 finger robotiq gripper -->
-  <!-- <xacro:include filename="$(find robotiq_description)/urdf/robotiq_hand.urdf.xacro" /> -->
+  <xacro:include filename="$(find robotiq_description)/urdf/robotiq_hand.urdf.xacro" />
 
   <!-- (B) Spawn the robot model (Right Arm) -->
   <!-- ur5 -->
@@ -57,13 +57,13 @@
 
 
   <!-- gripper spawn: linking the gripper to the arm end effector -->
-  <!-- <xacro:robotiq_hand prefix="" parent="ee_link" reflect="1">
+  <xacro:robotiq_hand prefix="" parent="ee_link" reflect="1">
     <origin rpy="0 ${pi/2.0 + pi/4.0} ${-pi/2.0}" xyz="0.051 0 0"/>
-  </xacro:robotiq_hand> -->
+  </xacro:robotiq_hand>
 
   
   <!-- plugin for RobotiQ hands -->
-  <!-- <gazebo>
+  <gazebo>
     <plugin name="left_robotiq_hand_plugin" filename="libRobotiqHandPlugin.so">
       <side>left</side>
       <kp_position>10.0</kp_position>
@@ -74,6 +74,7 @@
       <kp_position>10.0</kp_position>
       <kd_position>0.5</kd_position>
     </plugin>
-  </gazebo> -->
+  </gazebo>
+
 
 </robot>

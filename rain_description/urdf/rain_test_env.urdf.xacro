@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<test_env xmlns:xacro="http://ros.org/wiki/xacro"
+<robot xmlns:xacro="http://ros.org/wiki/xacro"
        name="rain_test_env" >
 
 <!-- (0) Stand -->
@@ -231,5 +231,5 @@
       </plugin>
     </sensor>
   </gazebo>  
-
-</test_env>
+  
+</robot>

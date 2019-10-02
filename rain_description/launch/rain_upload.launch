@@ -1,10 +1,27 @@
 <?xml version="1.0"?>
 <launch>
   <arg name="limited" default="false" doc="If true, limits joint range [-PI, PI] on all joints of UR5 (Note:Limited version is not available yet)" />
+  <arg name="gripper" default="none" doc="Choose either 'none', 'robotiq_3f'." />
   <arg name="transmission_hw_interface" default="hardware_interface/PositionJointInterface" />
 
-  <param unless="$(arg limited)" name="robot_description" command="$(find xacro)/xacro --inorder '$(find rain_description)/urdf/rain_robot.urdf.xacro' transmission_hw_interface:=$(arg transmission_hw_interface)" />
-  <param if="$(arg limited)" name="robot_description" command="$(find xacro)/xacro --inorder '$(find rain_description)/urdf/rain_limited_robot.urdf.xacro' transmission_hw_interface:=$(arg transmission_hw_interface)" />
+  <group if="$(arg limited)">
+    <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find rain_description)/urdf/rain_ur5_limited.urdf.xacro' transmission_hw_interface:=$(arg transmission_hw_interface)" />
+  </group>
+
+  <group unless="$(arg limited)"> 
+    <!-- Only UR5 -->
+    <group if="$(eval gripper == 'none')">
+      <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find rain_description)/urdf/rain_ur5.urdf.xacro' transmission_hw_interface:=$(arg transmission_hw_interface)" />
+    </group>    
+
+    <!-- UR5 + 3 Finger RobotiQ -->
+    <group if="$(eval gripper == 'robotiq_3f')">
+      <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find rain_description)/urdf/rain_ur5_robotiq3f.urdf.xacro' transmission_hw_interface:=$(arg transmission_hw_interface)" />
+    </group>
+
+  </group>
+
+
 
   <param name="env_description" command="$(find xacro)/xacro --inorder '$(find rain_description)/urdf/rain_test_env.urdf.xacro'" />
 </launch>

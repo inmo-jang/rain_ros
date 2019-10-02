@@ -60,30 +60,4 @@
     <origin xyz="0.0 0.0 1.0" rpy="0.0 0.0 0.0" />
   </joint>
 
-
-<!-- (2) Robotiq 3-finger gripper (Right Hand) (added by Inmo) -->
-  <!-- gripper -->
-  <xacro:include filename="$(find robotiq_description)/urdf/robotiq_hand.urdf.xacro" />
-
-  <!-- gripper spawn: linking the gripper to the arm end effector -->
-  <xacro:robotiq_hand prefix="r_" parent="ee_link" reflect="1">
-    <origin rpy="0 0 ${-pi/2.0}" xyz="0.051 0 0"/>
-  </xacro:robotiq_hand>
-
-  
-  <gazebo>
-    <!-- plugin for left RobotiQ hand -->
-    <plugin name="left_robotiq_hand_plugin" filename="libRobotiqHandPlugin.so">
-      <side>left</side>
-      <kp_position>10.0</kp_position>
-      <kd_position>0.5</kd_position>
-    </plugin>
-    <!-- plugin for right RobotiQ hand -->
-    <plugin name="right_robotiq_hand_plugin" filename="libRobotiqHandPlugin.so">
-      <side>right</side>
-      <kp_position>10.0</kp_position>
-      <kd_position>0.5</kd_position>
-    </plugin>
-  </gazebo>
-
 </robot>
