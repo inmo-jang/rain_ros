@@ -45,8 +45,8 @@
  
   <!-- 3 finger robotiq gripper -->
   <xacro:include filename="$(find robotiq_description)/urdf/robotiq_hand.urdf.xacro" />
-
-  <!-- (B) Spawn the robot model (Right Arm) -->
+ 
+  <!-- (B) Link the robot models -->
   <!-- ur5 -->
   <xacro:ur5_robot prefix="" joint_limited="false"/>
   <joint name="joint_stand_to_UR5" type="fixed">
