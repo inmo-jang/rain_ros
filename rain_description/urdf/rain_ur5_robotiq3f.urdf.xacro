@@ -57,7 +57,7 @@
 
 
   <!-- gripper spawn: linking the gripper to the arm end effector -->
-  <xacro:robotiq_hand prefix="" parent="ee_link" reflect="1">
+  <xacro:robotiq_hand prefix="r_" parent="ee_link" reflect="1">
     <origin rpy="0 ${pi/2.0 + pi/4.0} ${-pi/2.0}" xyz="0.051 0 0"/>
   </xacro:robotiq_hand>
 
