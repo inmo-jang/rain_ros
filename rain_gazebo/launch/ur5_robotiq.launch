@@ -2,7 +2,7 @@
 <launch>
   <!-- (0) SETTING PARAMETERS -->
   <arg name="limited" default="false"  doc="If true, limits joint range [-PI, PI] on all joints." />
-  <arg name="paused" default="false" doc="Starts gazebo in paused mode" />
+  <arg name="paused" default="true" doc="Starts gazebo in paused mode" />
   <arg name="gui" default="true" doc="Starts gazebo gui" />
   <arg name="gripper" default="none" doc="Choose either 'none', 'robotiq_3f'." />
   <arg name="camera" default="false" doc="If true, you will have three 2D cameras" />
@@ -11,7 +11,7 @@
   <!-- ### (1) LOAD THE WORLD ### -->
   <!-- startup simulated world -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
-    <arg name="world_name" default="$(find rain_gazebo)/worlds/test_picking2.world"/>
+    <arg name="world_name" default="$(find rain_gazebo)/worlds/test_picking.world"/>
     <arg name="paused" value="$(arg paused)"/>
     <arg name="gui" value="$(arg gui)"/>
   </include>
@@ -26,7 +26,7 @@
 
   <!-- push robot_description to factory and spawn robot in gazebo -->
   <node name="spawn_gazebo_model" pkg="gazebo_ros" type="spawn_model" 
-        args="-urdf -param robot_description -model robot -z 0.0" respawn="false" output="screen"/>
+        args="-urdf -param robot_description -model robot -z 0.0 -J robot::shoulder_pan_joint -0.4001 -J robot::shoulder_lift_joint -1.9519 -J robot::elbow_joint 1.9478 -J robot::wrist_1_joint 6.2050 -J robot::wrist_2_joint 1.1327 -J robot::wrist_3_joint 3.9964" respawn="false"  output="screen"/>
 
   <!-- push env_description to factory and spawn robot in gazebo (if camera is True ) -->
   <group if="$(arg camera)">
